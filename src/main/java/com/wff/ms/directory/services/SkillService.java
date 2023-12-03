@@ -5,6 +5,7 @@ import com.wff.ms.directory.models.entity.Skill;
 import java.util.List;
 
 public interface SkillService {
+
   void create(Skill skill);
 
   List<Skill> getAll();
@@ -13,5 +14,5 @@ public interface SkillService {
 
   Skill update(SkillUpdateDto skillUpdateDto);
 
-  void delete(Integer id);
+  void deleteById(Integer id);
 }

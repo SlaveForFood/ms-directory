@@ -43,7 +43,7 @@ public class SkillServiceImpl implements SkillService {
   }
 
   @Override
-  public void delete(Integer id) {
+  public void deleteById(Integer id) {
     var skill = getById(id);
     skillRepo.delete(skill);
   }
