@@ -6,22 +6,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="HeroesToSkills")
-public class HeroesToSkills {
+@Table(name = "heroes")
+public class Hero {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @OneToMany
-  private List<Hero> hero;
+  private String name;
 
-  // @OneToMany
-  // private List <Skill> skills;
+  private String description;
+
+  // @OneToOne
+  // private IDfaction;
 }
