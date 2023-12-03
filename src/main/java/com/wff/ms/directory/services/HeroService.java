@@ -5,7 +5,7 @@ import java.util.List;
 public interface HeroService {
     void create(Hero hero);
     List<Hero> getAll();
-    Hero get(Integer id);
-    Hero update();
+    Hero getById(Integer id);
+    String update(Hero hero);
     boolean delete(Integer id);
 }

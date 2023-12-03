@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class HeroesToSkillsUpdateDto {
+public class HeroToSkillUpdateDto {
     @NotNull(message = "Не указан id продукта")
     @Min(value=1,message = "Id не может быть меньше 1")
     private Integer id;

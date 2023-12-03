@@ -1,14 +1,13 @@
 package com.wff.ms.directory.services;
 
-import com.wff.ms.directory.models.entity.Hero;
-import com.wff.ms.directory.models.entity.HeroesToSkills;
+import com.wff.ms.directory.models.entity.HeroToSkill;
 
 import java.util.List;
 
 public interface HeroesToSkillsService {
-    void create(HeroesToSkills heroesToSkills);
-    List<HeroesToSkills> getAll();
-    HeroesToSkills get(Integer id);
-    HeroesToSkills update();
+    void create(HeroToSkill heroToSkill);
+    List<HeroToSkill> getAll();
+    HeroToSkill getById(Integer id);
+    String update(HeroToSkill heroToSkill);
     boolean delete(Integer id);
 }

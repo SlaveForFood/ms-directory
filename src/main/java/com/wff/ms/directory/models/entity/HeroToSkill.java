@@ -13,8 +13,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="HeroesToSkills")
-public class HeroesToSkills {
+@Table(name="HeroToSkill")
+public class HeroToSkill {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;

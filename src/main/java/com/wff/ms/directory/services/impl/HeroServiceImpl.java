@@ -5,6 +5,7 @@ import com.wff.ms.directory.repositories.HeroRepo;
 import com.wff.ms.directory.services.HeroService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 
 import java.util.List;
 
@@ -15,26 +16,35 @@ public class HeroServiceImpl implements HeroService  {
 
     @Override
     public void create(Hero hero){
-
+        heroRepo.save(hero);
     }
 
     @Override
     public List<Hero> getAll() {
-        return null;
+        List<Hero> heroes = heroRepo.findAll();
+        return heroes;
     }
 
     @Override
-    public Hero get(Integer id) {
-        return null;
+    public Hero getById(Integer id) {
+        return heroRepo
+                .findById(id)
+                .orElseThrow(()->new NotFoundException(String.format(
+                        "Продукт с id=%d не найден", id
+                )));
     }
 
     @Override
-    public Hero update() {
-        return null;
+    public String update(Hero hero) {
+        getById(hero.getId());
+        heroRepo.save(hero);
+        return String.format("Продукт с id=%d успешно отредактирован",hero.getId());
     }
 
     @Override
     public boolean delete(Integer id) {
-        return false;
+        var hero = getById(id);
+        heroRepo.delete(hero);
+        return true;
     }
 }
