@@ -1,3 +1,20 @@
 package com.wff.ms.directory.models.dto.update;
 
-public class SkillUpdateDto {}
+import com.wff.ms.directory.models.dto.SkillCreateDto;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+@Getter
+@Setter
+@AllArgsConstructor
+public class SkillUpdateDto {
+    @NotNull(message = "Не указан id скила")
+    @Min(value = 1, message = "Id не может быть меньше 1")
+    private Integer id;
+
+    private SkillCreateDto updatedInfo;
+}

@@ -1,5 +1,6 @@
 package com.wff.ms.directory.services.impl;
 
+import com.wff.ms.directory.models.dto.SkillDto;
 import com.wff.ms.directory.models.dto.update.SkillUpdateDto;
 import com.wff.ms.directory.models.entity.Skill;
 import com.wff.ms.directory.repositories.SkillRepo;
@@ -15,8 +16,9 @@ public class SkillServiceImpl implements SkillService {
   private final SkillRepo skillRepo;
 
   @Override
-  public void create(Skill skill) {
+  public SkillDto create(Skill skill) {
     skillRepo.save(skill);
+    return new SkillDto(skill);
   }
 
   @Override

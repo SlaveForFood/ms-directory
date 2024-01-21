@@ -1,12 +1,13 @@
 package com.wff.ms.directory.services;
 
+import com.wff.ms.directory.models.dto.SkillDto;
 import com.wff.ms.directory.models.dto.update.SkillUpdateDto;
 import com.wff.ms.directory.models.entity.Skill;
 import java.util.List;
 
 public interface SkillService {
 
-  void create(Skill skill);
+  SkillDto create(Skill skill);
 
   List<Skill> getAll();
 

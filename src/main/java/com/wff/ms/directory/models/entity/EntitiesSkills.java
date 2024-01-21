@@ -17,7 +17,7 @@ public class EntitiesSkills {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id", nullable = false)
-  private Integer id;
+  private Long id;
 
   @OneToMany List<Skill> skills;
 }
