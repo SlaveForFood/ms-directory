@@ -15,8 +15,8 @@ public class HeroServiceImpl implements HeroService  {
     private final HeroRepo heroRepo;
 
     @Override
-    public void create(Hero hero){
-        heroRepo.save(hero);
+    public Integer create(Hero hero){
+        heroRepo.save(hero);return hero.getId();
     }
 
     @Override
