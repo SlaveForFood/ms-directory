@@ -11,7 +11,7 @@ public interface HeroService {
 
     List<Hero> getAll();
 
-    Hero getById(Integer id);
+    HeroDto getById(Integer id);
 
     String update(Hero hero);
 

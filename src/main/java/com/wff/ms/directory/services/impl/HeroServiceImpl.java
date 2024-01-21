@@ -31,12 +31,12 @@ public class HeroServiceImpl implements HeroService {
     }
 
     @Override
-    public Hero getById(Integer id) {
-        return heroRepo
+    public HeroDto getById(Integer id) {
+        return heroMapper.mapToEntity(heroRepo
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException(String.format(
                         "Продукт с id=%d не найден", id
-                )));
+                ))));
     }
 
     @Override
@@ -48,7 +48,11 @@ public class HeroServiceImpl implements HeroService {
 
     @Override
     public boolean delete(Integer id) {
-        var hero = getById(id);
+        var hero = heroRepo
+                .findById(id)
+                .orElseThrow(() -> new NotFoundException(String.format(
+                        "Продукт с id=%d не найден", id
+                )));
         heroRepo.delete(hero);
         return true;
     }

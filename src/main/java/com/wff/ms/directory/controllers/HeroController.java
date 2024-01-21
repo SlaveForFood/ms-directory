@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,5 +29,15 @@ public class HeroController {
     @PostMapping("/")
     public ResponseEntity<HeroDto> create(@Valid @RequestBody HeroCreateDto heroCreateDto) {
         return ResponseEntity.status(201).body(heroService.create(heroCreateDto));
+    }
+
+    @GetMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Получить информаю о герое",
+        description = "Получить информацию о герое по id.")
+    public ResponseEntity<HeroDto> getHeroById(
+        @PathVariable @Valid @Min(value=1,message = "Id не может быть меньше 1") Integer id
+    ){
+        return ResponseEntity.status(201).body(heroService.getById(id));
     }
 }
