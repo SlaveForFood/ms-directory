@@ -1,5 +1,6 @@
 package com.wff.ms.directory.controllers;
 
+import com.wff.ms.directory.models.dto.HeroDto;
 import com.wff.ms.directory.models.dto.create.HeroCreateDto;
 import com.wff.ms.directory.models.dto.update.HeroUpdateDto;
 import com.wff.ms.directory.modules.mappers.HeroMapper;
@@ -16,18 +17,16 @@ import javax.validation.Valid;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/heroes")
-@Tag(name="Герои",description="\"Контроллер по добавлению и настройке героев\"")
+@Tag(name = "Герои", description = "\"Контроллер по добавлению и настройке героев\"")
 
 public class HeroController {
 
     private final HeroService heroService;
-    private final HeroMapper heroMapper;
-    @Operation(summary="Добавление героя",
-                    description="Создает героя с переданными характеристиками")
+
+    @Operation(summary = "Добавление героя",
+            description = "Создает героя с переданными характеристиками")
     @PostMapping("/")
-    public ResponseEntity<Integer> create(@Valid @RequestBody HeroCreateDto heroCreateDto){
-        // ResponseEntity<HeroDto> предлагал, но не пойму зачем возвращать героя
-        // Если можно вернуть ID героя
-        return ResponseEntity.status(201).body(heroService.create(heroMapper.mapToModel(heroCreateDto)));
+    public ResponseEntity<HeroDto> create(@Valid @RequestBody HeroCreateDto heroCreateDto) {
+        return ResponseEntity.status(201).body(heroService.create(heroCreateDto));
     }
 }

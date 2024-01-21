@@ -11,10 +11,6 @@ import javax.validation.constraints.*;
 @AllArgsConstructor
 public class HeroCreateDto {
 
-    @NotNull(message = "Не указан id героя")
-    @Min(value = 1, message = "Id не может быть меньше 1")
-    private Integer heroID;
-
     @Size(max=50, message="Поле \"name\" ограничено 50 символами")
     @NotBlank(message="Поле \"name\" должно иметь хотя бы один символ (не пробел)")
     private String name;
