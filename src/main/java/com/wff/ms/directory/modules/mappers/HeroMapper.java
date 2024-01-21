@@ -2,6 +2,7 @@ package com.wff.ms.directory.modules.mappers;
 
 import com.wff.ms.directory.models.dto.HeroDto;
 import com.wff.ms.directory.models.dto.create.HeroCreateDto;
+import com.wff.ms.directory.models.dto.update.HeroUpdateDto;
 import org.springframework.stereotype.Component;
 
 import com.wff.ms.directory.models.entity.Hero;
@@ -16,6 +17,14 @@ public class HeroMapper {
         hero.setDescription(dto.getDescription());
         return hero;
         // Не работает так: .setID(..).setName(..).setD...n(..)
+    }
+
+    public Hero mapToModel(HeroUpdateDto dto){
+        Hero hero = new Hero();
+        hero.setId(dto.getId());
+        //hero.setName(dto.getUpdateInfo().getName()); // нет getUpdateInfo
+        //hero.setDescription(dto.getDescription());
+        return hero;
     }
 
     public HeroDto mapToEntity(Hero hero){

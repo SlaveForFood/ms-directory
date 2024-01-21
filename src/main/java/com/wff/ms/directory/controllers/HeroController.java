@@ -3,7 +3,6 @@ package com.wff.ms.directory.controllers;
 import com.wff.ms.directory.models.dto.HeroDto;
 import com.wff.ms.directory.models.dto.create.HeroCreateDto;
 import com.wff.ms.directory.models.dto.update.HeroUpdateDto;
-import com.wff.ms.directory.modules.mappers.HeroMapper;
 import com.wff.ms.directory.services.HeroService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -39,5 +38,13 @@ public class HeroController {
         @PathVariable @Valid @Min(value=1,message = "Id не может быть меньше 1") Integer id
     ){
         return ResponseEntity.status(201).body(heroService.getById(id));
+    }
+
+    @PutMapping("/")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Отредактировать информацию о герое",
+        description = "В информации о герое будут заменены поля переданными параметрами.")
+    public String update(@Valid @RequestBody HeroUpdateDto dto){
+        return heroService.update(dto);
     }
 }

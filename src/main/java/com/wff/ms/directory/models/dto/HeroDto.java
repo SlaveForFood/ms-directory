@@ -11,13 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HeroDto {
-    public HeroDto(Hero hero){
-        id=hero.getId();
-        name=hero.getName();
-        description=hero.getDescription();
-        //IDfaction=hero.getIDFaction();
-    }
-
+    
     private Integer id;
 
     private String name;

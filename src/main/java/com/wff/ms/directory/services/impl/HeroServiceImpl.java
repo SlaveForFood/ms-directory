@@ -2,6 +2,7 @@ package com.wff.ms.directory.services.impl;
 
 import com.wff.ms.directory.models.dto.HeroDto;
 import com.wff.ms.directory.models.dto.create.HeroCreateDto;
+import com.wff.ms.directory.models.dto.update.HeroUpdateDto;
 import com.wff.ms.directory.models.entity.Hero;
 import com.wff.ms.directory.modules.mappers.HeroMapper;
 import com.wff.ms.directory.repositories.HeroRepo;
@@ -40,10 +41,10 @@ public class HeroServiceImpl implements HeroService {
     }
 
     @Override
-    public String update(Hero hero) {
-        getById(hero.getId());
-        heroRepo.save(hero);
-        return String.format("Продукт с id=%d успешно отредактирован", hero.getId());
+    public String update(HeroUpdateDto dto) {
+        getById(dto.getId());
+        heroRepo.save(heroMapper.mapToModel(dto));
+        return String.format("Продукт с id=%d успешно отредактирован", dto.getId());
     }
 
     @Override
