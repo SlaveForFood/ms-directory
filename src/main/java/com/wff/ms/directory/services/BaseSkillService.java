@@ -1,7 +1,8 @@
 package com.wff.ms.directory.services;
 
+import com.wff.ms.directory.models.dto.update.BaseSkillUpdateDto;
 import com.wff.ms.directory.models.entity.BaseSkill;
-import com.wff.ms.directory.models.entity.Skill;
+
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface BaseSkillService {
 
     BaseSkill getById(Integer id);
 
-//    Skill update(SkillUpdateDto skillUpdateDto);
+    BaseSkill update(BaseSkillUpdateDto baseSkillUpdateDto);
 
     void delete(Integer id);
 }

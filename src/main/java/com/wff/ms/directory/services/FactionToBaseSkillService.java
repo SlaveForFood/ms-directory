@@ -1,6 +1,6 @@
 package com.wff.ms.directory.services;
 
-import com.wff.ms.directory.models.dto.update.SkillUpdateDto;
+import com.wff.ms.directory.models.dto.update.FactionToBaseSkillUpdateDto;
 import com.wff.ms.directory.models.entity.FactionToBaseSkill;
 import com.wff.ms.directory.models.entity.Skill;
 
@@ -13,7 +13,7 @@ public interface FactionToBaseSkillService {
 
   FactionToBaseSkill getById(Integer id);
 
-  //        Skill update(SkillUpdateDto skillUpdateDto);
+  Skill update(FactionToBaseSkillUpdateDto factionToBaseSkillDto);
 
   void delete(Integer id);
 }

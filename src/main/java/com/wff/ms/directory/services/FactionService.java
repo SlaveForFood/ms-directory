@@ -1,6 +1,7 @@
 package com.wff.ms.directory.services;
 
 
+import com.wff.ms.directory.models.dto.update.FactionUpdateDto;
 import com.wff.ms.directory.models.entity.Faction;
 
 
@@ -13,7 +14,7 @@ public interface FactionService {
 
     Faction getById(Integer id);
 
-//    Faction update(SkillUpdateDto skillUpdateDto);
+    Faction update(FactionUpdateDto factionUpdateDto);
 
     void delete(Integer id);
 }
