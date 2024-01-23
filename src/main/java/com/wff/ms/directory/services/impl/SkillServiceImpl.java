@@ -1,8 +1,11 @@
 package com.wff.ms.directory.services.impl;
 
-import com.wff.ms.directory.models.dto.SkillDto;
+import com.wff.ms.directory.exceptions.NotFoundException;
+import com.wff.ms.directory.models.dto.create.SkillCreateDto;
+import com.wff.ms.directory.models.dto.response.SkillDto;
 import com.wff.ms.directory.models.dto.update.SkillUpdateDto;
 import com.wff.ms.directory.models.entity.Skill;
+import com.wff.ms.directory.modules.mappers.SkillMapper;
 import com.wff.ms.directory.repositories.SkillRepo;
 import com.wff.ms.directory.services.SkillService;
 import java.util.List;
@@ -14,39 +17,49 @@ import org.springframework.stereotype.Service;
 public class SkillServiceImpl implements SkillService {
 
   private final SkillRepo skillRepo;
+  private final SkillMapper skillMapper;
 
   @Override
-  public SkillDto create(Skill skill) {
-    skillRepo.save(skill);
-    return new SkillDto(skill);
+  public SkillDto create(SkillCreateDto skillCreateDto) {
+    Skill skill = skillMapper.skillCreateDtoToSkill(skillCreateDto);
+    skill = skillRepo.save(skill);
+    SkillDto skillDto = skillMapper.skillToSkillDto(skill);
+    return skillDto;
   }
 
   @Override
-  public List<Skill> getAll() {
-    var skills = skillRepo.findAll();
-    return skills;
+  public List<SkillDto> getAll() {
+    return skillRepo.findAll().stream().map(skillMapper::skillToSkillDto).toList();
   }
 
   @Override
-  public Skill getById(Integer id) {
-    var skill =
-        skillRepo
-            .findById(id)
-            .orElseThrow(
-                () -> new NullPointerException(String.format("Skill c id = %d не найден", id)));
-    return skill;
+  public SkillDto getById(Integer id) {
+    Skill skill = findById(id);
+    var response = skillMapper.skillToSkillDto(skill);
+    return response;
   }
 
   @Override
-  public Skill update(SkillUpdateDto skillUpdateDto) {
-    Skill skill = new Skill();
-    skillRepo.save(skill);
-    return skill;
+  public SkillDto update(SkillUpdateDto skillUpdateDto) {
+    Integer id = skillUpdateDto.getId();
+    Skill skill = findById(id);
+    skillMapper.updateSkill(skillUpdateDto, skill);
+    Skill updatedSkill = skillRepo.save(skill);
+    var response = skillMapper.skillToSkillDto(skill);
+    return response;
   }
 
   @Override
   public void deleteById(Integer id) {
-    var skill = getById(id);
-    skillRepo.delete(skill);
+    skillRepo.delete(findById(id));
+  }
+
+  private Skill findById(Integer id) {
+    return skillRepo
+        .findById(id)
+        .orElseThrow(
+            () ->
+                new NotFoundException(
+                    "Skill doesn't found while searching by id: %d".formatted(id)));
   }
 }

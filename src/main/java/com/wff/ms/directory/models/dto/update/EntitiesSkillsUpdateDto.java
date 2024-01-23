@@ -1,6 +1,6 @@
 package com.wff.ms.directory.models.dto.update;
 
-import com.wff.ms.directory.models.dto.EntitiesSkillsCreateDto;
+import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -11,9 +11,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class EntitiesSkillsUpdateDto {
-    @NotNull(message = "Не указан id скила существ")
-    @Min(value = 1, message = "Id не может быть меньше 1")
-    private Integer id;
-
-    private EntitiesSkillsCreateDto updatedInfo;
+  @Min(value = 1, message = "Field 'id' cannot be less than 1")
+  @NotNull(message = "Field 'id' cannot be null")
+  @Schema(description = "Id связи существ и умений", example = "1")
+  private Integer id;
 }
