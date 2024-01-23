@@ -23,8 +23,7 @@ public class SkillServiceImpl implements SkillService {
   public SkillDto create(SkillCreateDto skillCreateDto) {
     Skill skill = skillMapper.skillCreateDtoToSkill(skillCreateDto);
     skill = skillRepo.save(skill);
-    SkillDto skillDto = skillMapper.skillToSkillDto(skill);
-    return skillDto;
+    return skillMapper.skillToSkillDto(skill);
   }
 
   @Override
@@ -35,8 +34,7 @@ public class SkillServiceImpl implements SkillService {
   @Override
   public SkillDto getById(Integer id) {
     Skill skill = findById(id);
-    var response = skillMapper.skillToSkillDto(skill);
-    return response;
+    return skillMapper.skillToSkillDto(skill);
   }
 
   @Override
@@ -45,8 +43,7 @@ public class SkillServiceImpl implements SkillService {
     Skill skill = findById(id);
     skillMapper.updateSkill(skillUpdateDto, skill);
     Skill updatedSkill = skillRepo.save(skill);
-    var response = skillMapper.skillToSkillDto(skill);
-    return response;
+    return skillMapper.skillToSkillDto(updatedSkill);
   }
 
   @Override
