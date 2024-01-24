@@ -5,11 +5,11 @@ import com.wff.ms.directory.models.dto.response.SkillDto;
 import com.wff.ms.directory.models.dto.update.SkillUpdateDto;
 import com.wff.ms.directory.models.entity.Skill;
 import org.mapstruct.BeanMapping;
+import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
-import org.springframework.stereotype.Component;
 
-@Component
+@Mapper
 public interface SkillMapper {
   Skill skillCreateDtoToSkill(SkillCreateDto skillCreateDto);
 
