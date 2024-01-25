@@ -1,6 +1,6 @@
 package com.wff.ms.directory.services.impl;
 
-import com.wff.ms.directory.models.dto.HeroDto;
+import com.wff.ms.directory.models.dto.response.HeroDto;
 import com.wff.ms.directory.models.dto.create.HeroCreateDto;
 import com.wff.ms.directory.models.dto.update.HeroUpdateDto;
 import com.wff.ms.directory.models.entity.Hero;
@@ -26,9 +26,8 @@ public class HeroServiceImpl implements HeroService {
     }
 
     @Override
-    public List<Hero> getAll() {
-        List<Hero> heroes = heroRepo.findAll();
-        return heroes;
+    public List<HeroDto> getAll() {
+        return heroRepo.findAll().stream().map(heroMapper::mapToEntity).toList();
     }
 
     @Override
@@ -36,25 +35,31 @@ public class HeroServiceImpl implements HeroService {
         return heroMapper.mapToEntity(heroRepo
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException(String.format(
-                        "Продукт с id=%d не найден", id
+                        "Герой с id=%d не найден", id
                 ))));
     }
 
     @Override
-    public String update(HeroUpdateDto dto) {
-        getById(dto.getId());
-        heroRepo.save(heroMapper.mapToModel(dto));
-        return String.format("Продукт с id=%d успешно отредактирован", dto.getId());
+    public HeroDto update(HeroUpdateDto dto) {
+        //getById(dto.getId());
+        Hero hero = heroRepo.save(heroMapper.mapToModel(dto));
+        return heroMapper.mapToEntity(hero);
     }
 
     @Override
-    public boolean delete(Integer id) {
-        var hero = heroRepo
-                .findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format(
-                        "Продукт с id=%d не найден", id
-                )));
-        heroRepo.delete(hero);
-        return true;
+    public void deleteById(Integer id) {
+        heroRepo.delete(findById(id));
     }
+
+    private Hero findById(Integer id){
+        return heroRepo
+                .findById(id)
+                .orElseThrow(
+                    ()->
+                        new NotFoundException(
+                        "Hero doesn't found while searching by id: %d".formatted(id)
+                                )
+                );
+    }
+
 }

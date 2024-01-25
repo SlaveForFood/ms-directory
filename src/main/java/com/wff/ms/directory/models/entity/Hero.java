@@ -1,5 +1,6 @@
 package com.wff.ms.directory.models.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,10 +19,10 @@ public class Hero {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
+  @Schema(description = "Наименование героя")
   private String name;
 
+  @Schema(description = "Описание героя")
   private String description;
 
-  // @OneToOne
-  // private IDfaction;
 }
