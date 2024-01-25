@@ -1,6 +1,7 @@
 package com.wff.ms.directory.models.dto.update;
 
 import com.wff.ms.directory.models.dto.create.HeroCreateDto;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,5 +17,6 @@ public class HeroUpdateDto {
     @Min(value=1,message = "Id не может быть меньше 1")
     private Integer id;
 
-    private HeroCreateDto heroCreateDto;
+    @Schema(description = "Обновленные поля")
+    private HeroCreateDto updatedInfo;
 }
