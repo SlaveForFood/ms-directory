@@ -1,8 +1,7 @@
-package com.wff.ms.directory.models.dto.update;
+package com.wff.ms.directory.models.dto.create;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,17 +11,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "Dto Обновление фракции")
-public class FactionUpdateDto {
+@Schema(description = "Dto Фракции")
+public class FactionCreateDto {
 
-  @Min(value = 1, message = "Field 'id' cannot be less than 1")
-  @NotNull(message = "Field 'id' cannot be null")
-  @Schema(description = "Id Фракции", example = "1")
-  private Integer id;
-
+  @NotBlank(message = "Field 'name' cannot be null or empty")
   @Schema(description = "Наименование фракции", example = "Олимп")
   private String name;
 
+  @NotBlank(message = "Field 'description' cannot be null or empty")
   @Schema(
       description = "Описание фракции",
       example = "На Олимпе живет Зевс и другие греческие боги")
