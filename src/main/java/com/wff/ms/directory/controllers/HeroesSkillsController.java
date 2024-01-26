@@ -1,9 +1,9 @@
 package com.wff.ms.directory.controllers;
 
-import com.wff.ms.directory.models.dto.create.HeroToSkillCreateDto;
-import com.wff.ms.directory.models.dto.response.HeroToSkillDto;
-import com.wff.ms.directory.models.dto.update.HeroToSkillUpdateDto;
-import com.wff.ms.directory.services.HeroToSkillService;
+import com.wff.ms.directory.models.dto.create.HeroesSkillsCreateDto;
+import com.wff.ms.directory.models.dto.response.HeroesSkillsDto;
+import com.wff.ms.directory.models.dto.update.HeroesSkillsUpdateDto;
+import com.wff.ms.directory.services.HeroesSkillsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,40 +20,40 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/heroToSkill")
 @Tag(name = "Связь героев и навыков", description = "\"Контроллер по добавлению и настройке связей между героями и навыками\"")
-public class HeroToSkillController {
+public class HeroesSkillsController {
 
-    private final HeroToSkillService heroToSkillService;
+    private final HeroesSkillsService heroesSkillsService;
 
     @Operation(summary = "Добавление связей между героем и навыком",
             description = "Создает связь с переданным героем и навыком")
     @PostMapping("/")
-    public ResponseEntity<HeroToSkillDto> create(@Valid @RequestBody HeroToSkillCreateDto heroToSkillCreateDto) {
-        return ResponseEntity.status(201).body(heroToSkillService.create(heroToSkillCreateDto));
+    public ResponseEntity<HeroesSkillsDto> create(@Valid @RequestBody HeroesSkillsCreateDto heroesSkillsCreateDto) {
+        return ResponseEntity.status(201).body(heroesSkillsService.create(heroesSkillsCreateDto));
     }
 
     @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Получить информаю о герое",
             description = "Получить информацию о герое по id.")
-    public ResponseEntity<HeroToSkillDto> getById(
+    public ResponseEntity<HeroesSkillsDto> getById(
             @PathVariable @Valid @Min(value=1,message = "Id не может быть меньше 1") Integer id
     ){
-        return ResponseEntity.status(201).body(heroToSkillService.getById(id));
+        return ResponseEntity.status(201).body(heroesSkillsService.getById(id));
     }
 
     @PutMapping("/")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Отредактировать информацию о герое",
             description = "В информации о герое будут заменены поля переданными параметрами.")
-    public HeroToSkillDto update(@Valid @RequestBody HeroToSkillUpdateDto dto){
-        return heroToSkillService.update(dto);
+    public HeroesSkillsDto update(@Valid @RequestBody HeroesSkillsUpdateDto dto){
+        return heroesSkillsService.update(dto);
     }
 
     @Operation(
             summary = "Получение всех героев",
             description = "Возвращает список всех героев")
     @GetMapping
-    public ResponseEntity<List<HeroToSkillDto>> getAll(){ return ResponseEntity.ok(heroToSkillService.getAll());}
+    public ResponseEntity<List<HeroesSkillsDto>> getAll(){ return ResponseEntity.ok(heroesSkillsService.getAll());}
 
     @DeleteMapping("/{id}")
     public void deleteById(
@@ -62,6 +62,6 @@ public class HeroToSkillController {
             @Schema(description = "Идентификатор героя",example = "1")
             @PathVariable
             Integer id){
-        heroToSkillService.deleteById(id);
+        heroesSkillsService.deleteById(id);
     }
 }

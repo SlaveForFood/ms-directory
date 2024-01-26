@@ -1,15 +1,14 @@
 package com.wff.ms.directory.models.dto.response;
 
+import com.wff.ms.directory.models.entity.Faction;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "Dto Героя")
 public class HeroDto {
 
     @Schema(description = "Id героя", example = "1")
@@ -21,6 +20,6 @@ public class HeroDto {
     @Schema(description = "Описание героя", example = "Description")
     private String description;
 
-    @Schema(description = "Id фракции", example = "2")
-    private Integer factionID;
+    @Schema(description = "Фракция", example = "Faction")
+    private FactionDto faction;
 }

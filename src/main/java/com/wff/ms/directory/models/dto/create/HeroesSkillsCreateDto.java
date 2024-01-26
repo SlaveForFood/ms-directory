@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Dto Создание связей между героями и навыками")
-public class HeroToSkillCreateDto {
+public class HeroesSkillsCreateDto {
 
     @Min(value = 1, message = "Field 'heroId' cannot be less than 1")
     @NotNull(message = "Field 'heroId' cannot be null")

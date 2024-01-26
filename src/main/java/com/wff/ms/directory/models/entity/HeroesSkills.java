@@ -14,18 +14,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="heroes_skills")
-public class HeroToSkill {
+@Schema(description = "Entity Сущность описывающая связь героев и навыков")
+public class HeroesSkills {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Schema(description = "Id связи героев и навыков")
   private Integer id;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "hero_id")
+  @JoinColumn(name = "heroes_id")
   @Schema(description = "Герой")
   private Hero hero;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "skill_id")
+  @JoinColumn(name = "skills_id")
   @Schema(description = "Навык")
   private Skill skill;
 }
