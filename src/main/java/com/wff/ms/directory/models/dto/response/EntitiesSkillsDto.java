@@ -15,8 +15,8 @@ public class EntitiesSkillsDto {
   private Integer id;
 
   @Schema(description = "Сущность")
-  EntitiesDto entitiDto;
+  private EntitiesDto entitiDto;
 
   @Schema(description = "Умение")
-  SkillDto skill;
+  private SkillDto skill;
 }

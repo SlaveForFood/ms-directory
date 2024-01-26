@@ -3,6 +3,7 @@ package com.wff.ms.directory.models.dto.create;
 import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.*;
 
@@ -26,7 +27,7 @@ public class SkillCreateDto {
   @Schema(description = "Id родительского умения", example = "1")
   private Integer parentSkillId;
 
-  @NotBlank(message = "Field 'baseSkillId' cannot be null or empty")
+  @NotNull(message = "Field 'baseSkillId' cannot be null or empty")
   @Min(value = 1, message = "Field 'baseSkillId' cannot be less than 1")
   @Schema(description = "Id базового умения", example = "1")
   private Integer baseSkillId;

@@ -44,7 +44,7 @@ public class EntitiesSkillsController {
 
   @Operation(
       summary = "Получение связи существ и умений",
-      description = "Получае связь существ и умений по идентификатору")
+      description = "Получает связь существ и умений по идентификатору")
   @GetMapping("/{id}")
   public ResponseEntity<EntitiesSkillsDto> getById(
       @Valid
