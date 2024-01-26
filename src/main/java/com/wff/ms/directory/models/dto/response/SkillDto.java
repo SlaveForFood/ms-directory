@@ -18,4 +18,7 @@ public class SkillDto {
 
   @Schema(description = "Описание умения", example = "Дает невидимость на х сек")
   private String description;
+
+  @Schema(description = "Родительоское умение")
+  private SkillDto parentSkill;
 }

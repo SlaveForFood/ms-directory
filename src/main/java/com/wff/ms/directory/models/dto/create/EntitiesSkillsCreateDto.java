@@ -1,8 +1,8 @@
 package com.wff.ms.directory.models.dto.create;
 
-import com.wff.ms.directory.models.entity.Skill;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.List;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import lombok.*;
 
 @Data
@@ -12,6 +12,13 @@ import lombok.*;
 @Schema(description = "Dto Создание связи существ и умений")
 public class EntitiesSkillsCreateDto {
 
-  @Schema(description = "Список скилов")
-  private List<Skill> skills;
+  @Min(value = 1, message = "Field 'typeId' cannot be less than 1")
+  @NotNull(message = "Field 'typeId' cannot be null")
+  @Schema(description = "Id существа", example = "1")
+  private Integer entitiId;
+
+  @Min(value = 1, message = "Field 'clazzId' cannot be less than 1")
+  @NotNull(message = "Field 'clazzId' cannot be null")
+  @Schema(description = "Id умения", example = "1")
+  private Integer skillId;
 }

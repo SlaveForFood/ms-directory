@@ -22,4 +22,9 @@ public class SkillUpdateDto {
 
   @Schema(description = "Описание скила", example = "Дает невидимость на х сек")
   private String description;
+
+  @NotNull(message = "Не указан id навыка")
+  @Min(value=1,message = "Id не может быть меньше 1")
+  @Schema(description = "Id родительского умения",example = "1")
+  private Integer parentSkillId;
 }
