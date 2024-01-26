@@ -1,20 +1,18 @@
 package com.wff.ms.directory.services;
 
-
 import com.wff.ms.directory.models.dto.update.FactionUpdateDto;
 import com.wff.ms.directory.models.entity.Faction;
-
 
 import java.util.List;
 
 public interface FactionService {
-    void create(Faction faction);
+  void create(Faction faction);
 
-    List<Faction> getAll();
+  List<Faction> getAll();
 
-    Faction getById(Integer id);
+  Faction getById(Integer id);
 
-    Faction update(FactionUpdateDto factionUpdateDto);
+  String update(FactionUpdateDto factionUpdateDto);
 
-    void delete(Integer id);
+  void delete(Integer id);
 }
