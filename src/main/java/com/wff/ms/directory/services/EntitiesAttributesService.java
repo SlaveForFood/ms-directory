@@ -1,16 +1,20 @@
 package com.wff.ms.directory.services;
 
-import com.wff.ms.directory.models.entity.EntitiesAttributes;
+import com.wff.ms.directory.models.dto.create.EntitiesAttributesCreateDto;
+import com.wff.ms.directory.models.dto.response.EntitiesAttributesDto;
+import com.wff.ms.directory.models.dto.update.EntitiesAttributesUpdateDto;
 
 import java.util.List;
 
 public interface EntitiesAttributesService {
-    void create(EntitiesAttributes entitiesAttributes);
 
-    List<EntitiesAttributes> getAll();
+    EntitiesAttributesDto create(EntitiesAttributesCreateDto entitiesAttributesCreateDto);
 
-    EntitiesAttributes getById(Integer id);
+    List<EntitiesAttributesDto> getAll();
 
-    String update(EntitiesAttributes entitiesAttributes);
-    boolean delete(Integer id);
+    EntitiesAttributesDto getById(Integer id);
+
+    EntitiesAttributesDto update(EntitiesAttributesUpdateDto entitiesAttributesUpdateDto);
+
+    void deleteById(Integer id);
 }

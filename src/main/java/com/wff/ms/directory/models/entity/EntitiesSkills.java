@@ -22,7 +22,7 @@ public class EntitiesSkills {
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "entities_id")
   @Schema(description = "Существо")
-  private Entiti entity;
+  private Entities entity;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "skills_id")
