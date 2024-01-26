@@ -9,6 +9,7 @@ import com.wff.ms.directory.modules.mappers.SkillMapper;
 import com.wff.ms.directory.repositories.SkillRepo;
 import com.wff.ms.directory.services.SkillService;
 import java.util.List;
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,18 @@ public class SkillServiceImpl implements SkillService {
   @Override
   public SkillDto create(SkillCreateDto skillCreateDto) {
     Skill skill = skillMapper.skillCreateDtoToSkill(skillCreateDto);
+
+    var parentSkill =
+        skillRepo
+            .findById(skillCreateDto.getParentSkillId())
+            .orElseThrow(
+                () ->
+                    new org.webjars.NotFoundException(
+                        "Trying to create an skill with parent skill not exist. heroId: %d"
+                            .formatted(skillCreateDto.getParentSkillId())));
+
+    skill.setParentSkill(parentSkill);
+
     skill = skillRepo.save(skill);
     return skillMapper.skillToSkillDto(skill);
   }
@@ -41,6 +54,20 @@ public class SkillServiceImpl implements SkillService {
   public SkillDto update(SkillUpdateDto skillUpdateDto) {
     Integer id = skillUpdateDto.getId();
     Skill skill = findById(id);
+    Integer parentSkillId = skillUpdateDto.getParentSkillId();
+
+    if (Objects.nonNull(parentSkillId)) {
+      var parentSkill =
+          skillRepo
+              .findById(skillUpdateDto.getParentSkillId())
+              .orElseThrow(
+                  () ->
+                      new org.webjars.NotFoundException(
+                          "Trying to create an skill with parent skill not exist. heroId: %d"
+                              .formatted(skillUpdateDto.getParentSkillId())));
+      skill.setParentSkill(parentSkill);
+    }
+
     skillMapper.updateSkill(skillUpdateDto, skill);
     Skill updatedSkill = skillRepo.save(skill);
     return skillMapper.skillToSkillDto(updatedSkill);

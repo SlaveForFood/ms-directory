@@ -1,18 +1,19 @@
 package com.wff.ms.directory.services;
 
-import com.wff.ms.directory.models.entity.EntitiesSkills;
-
+import com.wff.ms.directory.models.dto.create.EntitiesSkillsCreateDto;
+import com.wff.ms.directory.models.dto.response.EntitiesSkillsDto;
+import com.wff.ms.directory.models.dto.update.EntitiesSkillsUpdateDto;
 import java.util.List;
 
 public interface EntitiesSkillsService {
 
-    void create(EntitiesSkills entitiesSkills);
+  EntitiesSkillsDto create(EntitiesSkillsCreateDto entitiesSkillsCreateDto);
 
-    List<EntitiesSkills> getAll();
+  List<EntitiesSkillsDto> getAll();
 
-    EntitiesSkills getById(Integer id);
+  EntitiesSkillsDto getById(Integer id);
 
-    EntitiesSkills update();
+  EntitiesSkillsDto update(EntitiesSkillsUpdateDto entitiesSkillsUpdateDto);
 
-    void deleteById(Integer id);
+  void deleteById(Integer id);
 }
