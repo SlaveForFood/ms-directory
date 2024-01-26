@@ -36,7 +36,7 @@ public class EntitiesSkillsServiceImpl implements EntitiesSkillsService {
             .orElseThrow(
                 () ->
                     new NotFoundException(
-                        "Trying to create an entitiesSkills with entity not exist. typeId: %d"
+                        "Trying to create an entitiesSkills with entity not exist. entityId: %d"
                             .formatted(entitiesSkillsCreateDto.getEntitiId())));
 
     var skill =
@@ -45,7 +45,7 @@ public class EntitiesSkillsServiceImpl implements EntitiesSkillsService {
             .orElseThrow(
                 () ->
                     new NotFoundException(
-                        "Trying to create an entitiesSkills with skill not exist. clazzId: %d"
+                        "Trying to create an entitiesSkills with skill not exist. skillId: %d"
                             .formatted(entitiesSkillsCreateDto.getSkillId())));
 
     entitiesSkills.setEntity(entiti);

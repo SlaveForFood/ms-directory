@@ -6,6 +6,7 @@ import com.wff.ms.directory.models.dto.response.SkillDto;
 import com.wff.ms.directory.models.dto.update.SkillUpdateDto;
 import com.wff.ms.directory.models.entity.Skill;
 import com.wff.ms.directory.modules.mappers.SkillMapper;
+import com.wff.ms.directory.repositories.BaseSkillRepo;
 import com.wff.ms.directory.repositories.SkillRepo;
 import com.wff.ms.directory.services.SkillService;
 import java.util.List;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 public class SkillServiceImpl implements SkillService {
 
   private final SkillRepo skillRepo;
+  private final BaseSkillRepo baseSkillRepo;
   private final SkillMapper skillMapper;
 
   @Override
@@ -30,9 +32,19 @@ public class SkillServiceImpl implements SkillService {
             .orElseThrow(
                 () ->
                     new org.webjars.NotFoundException(
-                        "Trying to create an skill with parent skill not exist. heroId: %d"
+                        "Trying to create an skill with parent-skill not exist. parentSkillId: %d"
                             .formatted(skillCreateDto.getParentSkillId())));
 
+    var baseSkill =
+        baseSkillRepo
+            .findById(skillCreateDto.getBaseSkillId())
+            .orElseThrow(
+                () ->
+                    new org.webjars.NotFoundException(
+                        "Trying to create an skill with base-skill not exist. baseSkillId: %d"
+                            .formatted(skillCreateDto.getBaseSkillId())));
+
+    skill.setBaseSkill(baseSkill);
     skill.setParentSkill(parentSkill);
 
     skill = skillRepo.save(skill);
@@ -63,9 +75,22 @@ public class SkillServiceImpl implements SkillService {
               .orElseThrow(
                   () ->
                       new org.webjars.NotFoundException(
-                          "Trying to create an skill with parent skill not exist. heroId: %d"
+                          "Trying to create an skill with parent-skill not exist. parentSkillId: %d"
                               .formatted(skillUpdateDto.getParentSkillId())));
       skill.setParentSkill(parentSkill);
+    }
+
+    Integer baseSkillId = skillUpdateDto.getBaseSkillId();
+    if (Objects.nonNull(baseSkillId)) {
+      var baseSkill =
+              baseSkillRepo
+                      .findById(skillUpdateDto.getBaseSkillId())
+                      .orElseThrow(
+                              () ->
+                                      new org.webjars.NotFoundException(
+                                              "Trying to create an skill with base-skill not exist. baseSkillId: %d"
+                                                      .formatted(skillUpdateDto.getBaseSkillId())));
+      skill.setBaseSkill(baseSkill);
     }
 
     skillMapper.updateSkill(skillUpdateDto, skill);
