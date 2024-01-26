@@ -17,43 +17,35 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/skills")
-@Tag(name = "Скил", description = "Контроллер настройке скилов")
+@Tag(name = "Умения", description = "Контроллер настройке умений")
 public class SkillController {
-  
+
   private final SkillService skillService;
 
-  @Operation(
-          summary = "Создание скила",
-          description = "Создает артефакт указанного типа и класса")
+  @Operation(summary = "Создание умения", description = "Создает умение")
   @PostMapping
-  public ResponseEntity<SkillDto> create(
-          @Valid @RequestBody SkillCreateDto skillCreateDto) {
+  public ResponseEntity<SkillDto> create(@Valid @RequestBody SkillCreateDto skillCreateDto) {
     return ResponseEntity.status(201).body(skillService.create(skillCreateDto));
   }
 
-  @Operation(summary = "Обновление скила", description = "Обновляет скил")
+  @Operation(summary = "Обновление умения", description = "Обновляет умение")
   @PutMapping
-  public ResponseEntity<SkillDto> update(
-          @Valid @RequestBody SkillUpdateDto skillUpdateDto) {
+  public ResponseEntity<SkillDto> update(@Valid @RequestBody SkillUpdateDto skillUpdateDto) {
     return ResponseEntity.ok(skillService.update(skillUpdateDto));
   }
 
-  @Operation(
-          summary = "Получение скила",
-          description = "Получает скил по его идентификатору")
+  @Operation(summary = "Получение умения", description = "Получает умение по его идентификатору")
   @GetMapping("/{id}")
   public ResponseEntity<SkillDto> getById(
-          @Valid
+      @Valid
           @Min(value = 1, message = "Field 'typeId' cannot be less than 1")
-          @Schema(description = "Идентификатор скила", example = "1")
+          @Schema(description = "Идентификатор умения", example = "1")
           @PathVariable
           Integer id) {
     return ResponseEntity.ok(skillService.getById(id));
   }
 
-  @Operation(
-          summary = "Получение всех скилов",
-          description = "Возвращает список всех скилов")
+  @Operation(summary = "Получение всех умений", description = "Возвращает список всех умений")
   @GetMapping
   public ResponseEntity<List<SkillDto>> getAll() {
     return ResponseEntity.ok(skillService.getAll());
@@ -61,9 +53,9 @@ public class SkillController {
 
   @DeleteMapping("/{id}")
   public void deleteById(
-          @Valid
+      @Valid
           @Min(value = 1, message = "Field 'typeId' cannot be less than 1")
-          @Schema(description = "Идентификатор скила", example = "1")
+          @Schema(description = "Идентификатор умения", example = "1")
           @PathVariable
           Integer id) {
     skillService.deleteById(id);

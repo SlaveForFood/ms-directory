@@ -1,6 +1,6 @@
 package com.wff.ms.directory.models.entity;
 
-import java.util.List;
+import io.swagger.v3.oas.annotations.media.Schema;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,9 +15,17 @@ import lombok.NoArgsConstructor;
 @Table(name = "entities_skills")
 public class EntitiesSkills {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
-  private Long id;
+  private Integer id;
 
-  @OneToMany List<Skill> skills;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "entities_id")
+  @Schema(description = "Существо")
+  private Entiti entity;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "skills_id")
+  @Schema(description = "Умение")
+  private Skill skill;
 }

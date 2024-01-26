@@ -1,17 +1,17 @@
 package com.wff.ms.directory.services;
 
-import com.wff.ms.directory.models.entity.Entities;
-
+import com.wff.ms.directory.models.entity.Entiti;
 import java.util.List;
 
 public interface EntitiesService {
 
-    void create(Entities entities);
+  void create(Entiti entity);
 
-    List<Entities> getAll();
+  List<Entiti> getAll();
 
-    Entities getById(Integer id);
+  Entiti getById(Integer id);
 
-    String update(Entities entities);
-    boolean delete(Integer id);
+  String update(Entiti entity);
+
+  void delete(Integer id);
 }

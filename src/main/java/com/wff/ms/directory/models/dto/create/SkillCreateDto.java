@@ -9,14 +9,15 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "Dto Создание скила")
+@Schema(description = "Dto Создание умения")
 public class SkillCreateDto {
 
   @NotBlank(message = "Field 'name' cannot be null or empty")
-  @Size(max = 50, message = "Поле \"name\" ограничено 50 символами")
-  @Schema(description = "Наименование скила", example = "Огненый шар")
+  @Size(max = 50, message = "Field 'name': max length 50")
+  @Schema(description = "Наименование умения", example = "Огненный шар")
   private String name;
 
-  @Size(max = 255, message = "Поле \"description\" ограничено 255 символами")
+  @Size(max = 255, message = "Field 'description': max length 255")
+  @Schema(description = "Описание умения", example = "Пускает огненный шар")
   private String description;
 }

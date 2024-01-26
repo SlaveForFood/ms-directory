@@ -7,15 +7,15 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "Dto скила")
+@Schema(description = "Dto умения")
 public class SkillDto {
 
-  @Schema(description = "Id артефакта", example = "1")
+  @Schema(description = "Id умения", example = "1")
   private Integer id;
 
-  @Schema(description = "Наименование скила", example = "Skill")
+  @Schema(description = "Наименование умения", example = "Огненный шар")
   private String name;
 
-  @Schema(description = "Описание скила", example = "Дает невидимость на х сек")
+  @Schema(description = "Описание умения", example = "Дает невидимость на х сек")
   private String description;
 }
