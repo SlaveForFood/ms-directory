@@ -11,20 +11,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "entities_attributes")
-public class EntitiesAttributes {
+@Table(name = "entities")
+public class Entiti {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  private Integer count;
+  private String name;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "entities_id")
-  private Entiti entity;
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "attribute_id")
-  private Attribute attribute;
+  private Integer cost;
 }
