@@ -22,7 +22,7 @@ public class EntitiesAttributes {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "entities_id")
-  private Entiti entity;
+  private Entities entity;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "attribute_id")

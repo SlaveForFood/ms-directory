@@ -1,16 +1,20 @@
 package com.wff.ms.directory.services;
 
-import com.wff.ms.directory.models.entity.Tier;
+import com.wff.ms.directory.models.dto.create.TierCreateDto;
+import com.wff.ms.directory.models.dto.response.TierDto;
+import com.wff.ms.directory.models.dto.update.TierUpdateDto;
 
 import java.util.List;
 
 public interface TierService {
-    void create(Tier tier);
 
-    List<Tier> getAll();
+    TierDto create(TierCreateDto tierCreateDto);
 
-    Tier getById(Integer id);
+    List<TierDto> getAll();
 
-    String update(Tier tier);
-    boolean delete(Integer id);
+    TierDto getById(Integer id);
+
+    TierDto update(TierUpdateDto tierUpdateDto);
+
+    void deleteById(Integer id);
 }

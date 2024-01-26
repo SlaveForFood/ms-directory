@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "attributes")
+@Table(name = "attribute")
 public class Attribute {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,4 +19,6 @@ public class Attribute {
   private Integer id;
 
   private String name;
+
+  private Boolean isDebuff;
 }
