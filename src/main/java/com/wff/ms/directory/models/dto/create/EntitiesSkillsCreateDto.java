@@ -12,13 +12,13 @@ import lombok.*;
 @Schema(description = "Dto Создание связи существ и умений")
 public class EntitiesSkillsCreateDto {
 
-  @Min(value = 1, message = "Field 'typeId' cannot be less than 1")
-  @NotNull(message = "Field 'typeId' cannot be null")
+  @Min(value = 1, message = "Field 'entityId' cannot be less than 1")
+  @NotNull(message = "Field 'entityId' cannot be null")
   @Schema(description = "Id существа", example = "1")
   private Integer entitiId;
 
-  @Min(value = 1, message = "Field 'clazzId' cannot be less than 1")
-  @NotNull(message = "Field 'clazzId' cannot be null")
+  @Min(value = 1, message = "Field 'skillId' cannot be less than 1")
+  @NotNull(message = "Field 'skillId' cannot be null")
   @Schema(description = "Id умения", example = "1")
   private Integer skillId;
 }

@@ -38,7 +38,7 @@ public class SkillController {
   @GetMapping("/{id}")
   public ResponseEntity<SkillDto> getById(
       @Valid
-          @Min(value = 1, message = "Field 'typeId' cannot be less than 1")
+          @Min(value = 1, message = "Field 'id' cannot be less than 1")
           @Schema(description = "Идентификатор умения", example = "1")
           @PathVariable
           Integer id) {
@@ -54,7 +54,7 @@ public class SkillController {
   @DeleteMapping("/{id}")
   public void deleteById(
       @Valid
-          @Min(value = 1, message = "Field 'typeId' cannot be less than 1")
+          @Min(value = 1, message = "Field 'id' cannot be less than 1")
           @Schema(description = "Идентификатор умения", example = "1")
           @PathVariable
           Integer id) {

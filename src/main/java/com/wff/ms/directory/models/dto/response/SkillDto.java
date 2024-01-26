@@ -21,4 +21,7 @@ public class SkillDto {
 
   @Schema(description = "Родительоское умение")
   private SkillDto parentSkill;
+
+  @Schema(description = "Базовое умение")
+  private BaseSkillsDto baseSkill;
 }

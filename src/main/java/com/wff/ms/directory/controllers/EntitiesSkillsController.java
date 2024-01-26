@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/entities-skills")
 @Tag(
     name = "Связь существ и умений",
-    description = "\"Контроллер по настройке связи существ и умений\"")
+    description = "Контроллер по настройке связи существ и умений")
 public class EntitiesSkillsController {
 
   private final EntitiesSkillsService entitiesSkillsService;
@@ -43,12 +43,12 @@ public class EntitiesSkillsController {
   }
 
   @Operation(
-      summary = "Получить информаю о герое",
-      description = "Получить информацию о герое по id.")
+      summary = "Получение связи существ и умений",
+      description = "Получает связь существ и умений по идентификатору")
   @GetMapping("/{id}")
   public ResponseEntity<EntitiesSkillsDto> getById(
       @Valid
-          @Min(value = 1, message = "Field 'typeId' cannot be less than 1")
+          @Min(value = 1, message = "Field 'id' cannot be less than 1")
           @Schema(description = "Идентификатор связи существ и умений", example = "1")
           @PathVariable
           Integer id) {
@@ -66,8 +66,8 @@ public class EntitiesSkillsController {
   @DeleteMapping("/{id}")
   public void deleteById(
       @Valid
-          @Min(value = 1, message = "Field 'typeId' cannot be less than 1")
-          @Schema(description = "Идентификатор героя", example = "1")
+          @Min(value = 1, message = "Field 'id' cannot be less than 1")
+          @Schema(description = "Идентификатор связи существ и умений", example = "1")
           @PathVariable
           Integer id) {
     entitiesSkillsService.deleteById(id);
