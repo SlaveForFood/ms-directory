@@ -1,7 +1,11 @@
 package com.wff.ms.directory.services.impl;
 
+import com.wff.ms.directory.exceptions.NotFoundException;
+import com.wff.ms.directory.models.dto.create.FactionCreateDto;
+import com.wff.ms.directory.models.dto.response.FactionDto;
 import com.wff.ms.directory.models.dto.update.FactionUpdateDto;
 import com.wff.ms.directory.models.entity.Faction;
+import com.wff.ms.directory.modules.mappers.FactionMapper;
 import com.wff.ms.directory.repositories.FactionRepo;
 import com.wff.ms.directory.services.FactionService;
 import java.util.List;
@@ -13,38 +17,44 @@ import org.springframework.stereotype.Service;
 public class FactionServiceImpl implements FactionService {
 
   private final FactionRepo factionRepo;
+  private final FactionMapper factionMapper;
 
   @Override
-  public void create(Faction faction) {
+  public FactionDto create(FactionCreateDto factionCreateDto) {
+    var faction = factionMapper.factionCreateDtoToFaction(factionCreateDto);
+    faction = factionRepo.save(faction);
+    return factionMapper.factionToFactionDto(faction);
+  }
+
+  @Override
+  public FactionDto update(FactionUpdateDto factionUpdateDto) {
+    Faction faction = findById(factionUpdateDto.getId());
+    factionMapper.updateFaction(factionUpdateDto, faction);
     factionRepo.save(faction);
+    return factionMapper.factionToFactionDto(faction);
   }
 
   @Override
-  public List<Faction> getAll() {
-    var factions = factionRepo.findAll();
-    return factions;
+  public List<FactionDto> getAll() {
+    return factionRepo.findAll().stream().map(factionMapper::factionToFactionDto).toList();
   }
 
   @Override
-  public Faction getById(Integer id) {
-    var faction =
-        factionRepo
-            .findById(id)
-            .orElseThrow(
-                () -> new NullPointerException(String.format("Faction c id = %d не найден", id)));
-    return faction;
+  public FactionDto getById(Integer id) {
+    return factionMapper.factionToFactionDto(findById(id));
   }
 
   @Override
-  public String update(FactionUpdateDto factionUpdateDto) {
-    Faction faction = new Faction();
-    factionRepo.save(faction);
-    return "faction updated";
+  public void deleteById(Integer id) {
+    factionRepo.delete(findById(id));
   }
 
-  @Override
-  public void delete(Integer id) {
-    var faction = getById(id);
-    factionRepo.delete(faction);
+  private Faction findById(Integer id) {
+    return factionRepo
+        .findById(id)
+        .orElseThrow(
+            () ->
+                new NotFoundException(
+                    "Faction doesn't found while searching by id: %d".formatted(id)));
   }
 }

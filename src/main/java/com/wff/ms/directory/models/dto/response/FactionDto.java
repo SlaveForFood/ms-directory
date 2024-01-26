@@ -1,4 +1,4 @@
-package com.wff.ms.directory.models.dto.update;
+package com.wff.ms.directory.models.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.Min;
@@ -12,12 +12,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "Dto Обновление фракции")
-public class FactionUpdateDto {
+@Schema(description = "Dto Фракция")
+public class FactionDto {
 
   @Min(value = 1, message = "Field 'id' cannot be less than 1")
   @NotNull(message = "Field 'id' cannot be null")
-  @Schema(description = "Id Фракции", example = "1")
+  @Schema(description = "Id фракции", example = "1")
   private Integer id;
 
   @Schema(description = "Наименование фракции", example = "Олимп")

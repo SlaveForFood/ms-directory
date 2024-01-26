@@ -1,10 +1,6 @@
 package com.wff.ms.directory.models.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,4 +21,8 @@ public class BaseSkill {
   private String name;
 
   private String description;
+
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "parent_base_skill_id")
+  private BaseSkill parentBaseSkill;
 }

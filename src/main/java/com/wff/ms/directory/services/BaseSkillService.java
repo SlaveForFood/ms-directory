@@ -1,17 +1,18 @@
 package com.wff.ms.directory.services;
 
+import com.wff.ms.directory.models.dto.create.BaseSkillCreateDto;
+import com.wff.ms.directory.models.dto.response.BaseSkillsDto;
 import com.wff.ms.directory.models.dto.update.BaseSkillUpdateDto;
-import com.wff.ms.directory.models.entity.BaseSkill;
 import java.util.List;
 
 public interface BaseSkillService {
-  void create(BaseSkill baseSkill);
+  BaseSkillsDto create(BaseSkillCreateDto baseSkillCreateDto);
 
-  List<BaseSkill> getAll();
+  List<BaseSkillsDto> getAll();
 
-  BaseSkill getById(Integer id);
+  BaseSkillsDto getById(Integer id);
 
-  String update(BaseSkillUpdateDto baseSkillUpdateDto);
+  BaseSkillsDto update(BaseSkillUpdateDto baseSkillUpdateDto);
 
-  void delete(Integer id);
+  void deleteById(Integer id);
 }
