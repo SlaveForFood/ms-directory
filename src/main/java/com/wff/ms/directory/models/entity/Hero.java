@@ -14,9 +14,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "heroes")
+@Schema(description = "Entity Сущность описывающая героя")
 public class Hero {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Schema(description = "Id героя")
   private Integer id;
 
   @Schema(description = "Наименование героя")
@@ -24,5 +26,10 @@ public class Hero {
 
   @Schema(description = "Описание героя")
   private String description;
+
+  @ManyToOne
+  @JoinColumn(name = "faction_id")
+  @Schema(description = "Фракция героя")
+  private Faction faction;
 
 }

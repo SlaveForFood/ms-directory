@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class HeroToSkillUpdateDto {
+public class HeroesSkillsUpdateDto {
     @NotNull(message = "Не указан id heroToSkill")
     @Min(value=1,message = "Id не может быть меньше 1")
     @Schema(description = "Id heroToSkill", example = "1")

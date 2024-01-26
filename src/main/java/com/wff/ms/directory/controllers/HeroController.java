@@ -19,13 +19,13 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/heroes")
-@Tag(name = "Герои", description = "\"Контроллер по добавлению и настройке героев\"")
+@Tag(name = "Герои", description = "\"Контроллер по настройке героев\"")
 
 public class HeroController {
 
     private final HeroService heroService;
 
-    @Operation(summary = "Добавление героя",
+    @Operation(summary = "Создание героя",
             description = "Создает героя с переданными характеристиками")
     @PostMapping("/")
     public ResponseEntity<HeroDto> create(@Valid @RequestBody HeroCreateDto heroCreateDto) {
@@ -37,17 +37,21 @@ public class HeroController {
     @Operation(summary = "Получить информаю о герое",
         description = "Получить информацию о герое по id.")
     public ResponseEntity<HeroDto> getById(
-        @PathVariable @Valid @Min(value=1,message = "Id не может быть меньше 1") Integer id
+        @Valid
+        @Min(value=1,message = "Id не может быть меньше 1")
+        @Schema(description = "Идентификатор героя", example = "1")
+        @PathVariable
+        Integer id
     ){
         return ResponseEntity.status(201).body(heroService.getById(id));
     }
 
     @PutMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Отредактировать информацию о герое",
-        description = "В информации о герое будут заменены поля переданными параметрами.")
-    public HeroDto update(@Valid @RequestBody HeroUpdateDto dto){
-        return heroService.update(dto);
+    @Operation(summary = "Обновление информации о герое",
+        description = "Обновляет информацию о герое.")
+    public ResponseEntity<HeroDto> update(@Valid @RequestBody HeroUpdateDto dto){
+        return ResponseEntity.ok(heroService.update(dto));
     }
 
     @Operation(
