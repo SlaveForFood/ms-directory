@@ -1,19 +1,18 @@
 package com.wff.ms.directory.models.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="heroes_skills")
+@Table(name = "heroes_skills")
 @Schema(description = "Entity Сущность описывающая связь героев и навыков")
 public class HeroesSkills {
 

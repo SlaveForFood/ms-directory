@@ -48,7 +48,7 @@ public class EntitiesSkillsServiceImpl implements EntitiesSkillsService {
                         "Trying to create an entitiesSkills with skill not exist. skillId: %d"
                             .formatted(entitiesSkillsCreateDto.getSkillId())));
 
-    entitiesSkills.setEntity(entiti);
+    entitiesSkills.setEntiti(entiti);
     entitiesSkills.setSkill(skill);
 
     entitiesSkills = entitiesSkillsRepo.save(entitiesSkills);
@@ -84,7 +84,7 @@ public class EntitiesSkillsServiceImpl implements EntitiesSkillsService {
                       new com.wff.ms.directory.exceptions.NotFoundException(
                           "Trying to update an entitiesSkills with entity not exist. EntitiesSkills id: %d, entityId: %d"
                               .formatted(id, entitiId)));
-      entitiesSkills.setEntity(entiti);
+      entitiesSkills.setEntiti(entiti);
     }
 
     Integer skillId = entitiesSkillsUpdateDto.getSkillId();

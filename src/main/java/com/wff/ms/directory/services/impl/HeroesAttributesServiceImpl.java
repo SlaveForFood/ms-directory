@@ -6,15 +6,14 @@ import com.wff.ms.directory.models.dto.response.HeroesAttributesDto;
 import com.wff.ms.directory.models.dto.update.HeroesAttributesUpdateDto;
 import com.wff.ms.directory.models.entity.HeroesAttributes;
 import com.wff.ms.directory.modules.mappers.HeroesAttributesMapper;
+import com.wff.ms.directory.repositories.AttributeRepo;
 import com.wff.ms.directory.repositories.HeroRepo;
 import com.wff.ms.directory.repositories.HeroesAttributesRepo;
-import com.wff.ms.directory.repositories.AttributeRepo;
 import com.wff.ms.directory.services.HeroesAttributesService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Objects;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 /**
  * Реализация интерфейса {@link HeroesAttributesService}

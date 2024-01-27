@@ -1,7 +1,7 @@
 package com.wff.ms.directory.controllers;
 
 import com.wff.ms.directory.models.dto.create.BaseSkillCreateDto;
-import com.wff.ms.directory.models.dto.response.BaseSkillsDto;
+import com.wff.ms.directory.models.dto.response.BaseSkillDto;
 import com.wff.ms.directory.models.dto.update.BaseSkillUpdateDto;
 import com.wff.ms.directory.services.BaseSkillService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,14 +26,14 @@ public class BaseSkillController {
       summary = "Создание базовых умений",
       description = "Создает базовые умения и их описание")
   @PostMapping
-  public ResponseEntity<BaseSkillsDto> create(
+  public ResponseEntity<BaseSkillDto> create(
       @Valid @RequestBody BaseSkillCreateDto baseSkillCreateDto) {
     return ResponseEntity.status(201).body(baseSkillService.create(baseSkillCreateDto));
   }
 
   @Operation(summary = "Обновление базовых умений", description = "Обновляет базовые умения")
   @PutMapping
-  public ResponseEntity<BaseSkillsDto> update(
+  public ResponseEntity<BaseSkillDto> update(
       @Valid @RequestBody BaseSkillUpdateDto baseSkillUpdateDto) {
     return ResponseEntity.ok(baseSkillService.update(baseSkillUpdateDto));
   }
@@ -42,7 +42,7 @@ public class BaseSkillController {
       summary = "Получение базовых умений",
       description = "Получает базовые умения по их идентификатору")
   @GetMapping("/{id}")
-  public ResponseEntity<BaseSkillsDto> getById(
+  public ResponseEntity<BaseSkillDto> getById(
       @Valid
           @Min(value = 1, message = "Field 'id' cannot be less than 1")
           @Schema(description = "Идентификатор базовых умений", example = "1")
@@ -55,7 +55,7 @@ public class BaseSkillController {
       summary = "Получение всех базовых умений",
       description = "Возвращает список всех базовых умений")
   @GetMapping
-  public ResponseEntity<List<BaseSkillsDto>> getAll() {
+  public ResponseEntity<List<BaseSkillDto>> getAll() {
     return ResponseEntity.ok(baseSkillService.getAll());
   }
 

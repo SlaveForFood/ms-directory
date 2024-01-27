@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name = "entities_skills")
 public class EntitiesSkills {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
@@ -22,7 +23,7 @@ public class EntitiesSkills {
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "entities_id")
   @Schema(description = "Существо")
-  private Entities entity;
+  private Entiti entiti;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "skills_id")

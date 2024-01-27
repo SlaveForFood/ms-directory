@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "skills")
 @Schema(description = "Сущность описывающая умение")
 public class Skill {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id", nullable = false)

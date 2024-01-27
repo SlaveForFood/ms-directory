@@ -12,11 +12,10 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper
 public interface AttributeMapper {
 
-    Attribute attributeCreateDtoToAttribute(AttributeCreateDto attributeCreateDto);
+  Attribute attributeCreateDtoToAttribute(AttributeCreateDto attributeCreateDto);
 
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateAttribute(AttributesUpdateDto attributesUpdateDto, @MappingTarget Attribute attribute);
+  @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+  void updateAttribute(AttributesUpdateDto attributesUpdateDto, @MappingTarget Attribute attribute);
 
-    AttributeDto attributeToAttributeDto(Attribute attribute);
-
+  AttributeDto attributeToAttributeDto(Attribute attribute);
 }

@@ -1,7 +1,7 @@
 package com.wff.ms.directory.modules.mappers;
 
 import com.wff.ms.directory.models.dto.create.BaseSkillCreateDto;
-import com.wff.ms.directory.models.dto.response.BaseSkillsDto;
+import com.wff.ms.directory.models.dto.response.BaseSkillDto;
 import com.wff.ms.directory.models.dto.update.BaseSkillUpdateDto;
 import com.wff.ms.directory.models.entity.BaseSkill;
 import org.mapstruct.BeanMapping;
@@ -16,5 +16,5 @@ public interface BaseSkillMapper {
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
   void updateBaseSkill(BaseSkillUpdateDto baseSkillUpdateDto, @MappingTarget BaseSkill baseSkill);
 
-  BaseSkillsDto baseSkillToBaseSkillDto(BaseSkill baseSkill);
+  BaseSkillDto baseSkillToBaseSkillDto(BaseSkill baseSkill);
 }

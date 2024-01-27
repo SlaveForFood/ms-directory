@@ -10,12 +10,12 @@ import lombok.*;
 @Schema(description = "Dto Сущность описывающая связи героев и навыков")
 public class HeroesSkillsDto {
 
-    @Schema(description = "Id связи между героем и", example = "1")
-    private Integer id;
+  @Schema(description = "Id связи между героем и", example = "1")
+  private Integer id;
 
-    @Schema(description = "Герой")
-    private HeroDto hero;
+  @Schema(description = "Герой")
+  private HeroDto hero;
 
-    @Schema(description = "Навык")
-    private SkillDto skill;
+  @Schema(description = "Навык")
+  private SkillDto skill;
 }

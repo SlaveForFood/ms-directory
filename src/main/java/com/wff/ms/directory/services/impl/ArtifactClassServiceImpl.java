@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ArtifactClassServiceImpl implements ArtifactClassService {
+
   private final ArtifactClassRepo artifactClassRepo;
   private final ArtifactMapper artifactMapper;
 

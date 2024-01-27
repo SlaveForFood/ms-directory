@@ -20,5 +20,5 @@ public class FactionsBaseSkillsDto {
   private FactionDto factionDto;
 
   @Schema(description = "Базовое умения", example = "1")
-  private BaseSkillsDto baseSkillsDto;
+  private BaseSkillDto baseSkillDto;
 }

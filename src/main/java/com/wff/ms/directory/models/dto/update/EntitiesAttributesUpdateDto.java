@@ -1,6 +1,5 @@
 package com.wff.ms.directory.models.dto.update;
 
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -16,19 +15,19 @@ import lombok.NoArgsConstructor;
 @Schema(description = "Dto Обновление связей существ и атрибутов")
 public class EntitiesAttributesUpdateDto {
 
-    @Min(value = 1, message = "Field 'id' cannot be less than 1")
-    @NotNull(message = "Field 'id' cannot be null")
-    @Schema(description = "Id связей существ и атрибутов", example = "1")
-    private Integer id;
+  @Min(value = 1, message = "Field 'id' cannot be less than 1")
+  @NotNull(message = "Field 'id' cannot be null")
+  @Schema(description = "Id связей существ и атрибутов", example = "1")
+  private Integer id;
 
-    @Schema(description = "Размер атрибута", example = "10")
-    private Integer count;
+  @Schema(description = "Размер атрибута", example = "10")
+  private Integer count;
 
-    @Min(value = 1, message = "Field 'entitiesId' cannot be less than 1")
-    @Schema(description = "Id существа", example = "1")
-    private Integer entitiesId;
+  @Min(value = 1, message = "Field 'entitiesId' cannot be less than 1")
+  @Schema(description = "Id существа", example = "1")
+  private Integer entitiesId;
 
-    @Min(value = 1, message = "Field 'attributeId' cannot be less than 1")
-    @Schema(description = "Id атрибута", example = "1")
-    private Integer attributeId;
+  @Min(value = 1, message = "Field 'attributeId' cannot be less than 1")
+  @Schema(description = "Id атрибута", example = "1")
+  private Integer attributeId;
 }
