@@ -3,7 +3,6 @@ package com.wff.ms.directory.services;
 import com.wff.ms.directory.models.dto.response.ArtifactClassDto;
 import com.wff.ms.directory.models.dto.update.ArtifactClassUpdateDto;
 import com.wff.ms.directory.models.entity.ArtifactClass;
-
 import java.util.List;
 
 /**

@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class EntitiesServiceImpl implements EntitiesService {
 
-    private final EntitiesRepo entitiesRepo;
+    private final EntitiRepo entitiRepo;
     private final TierRepo tierRepo;
     private final EntitiesMapper entitiesMapper;
 
@@ -40,7 +40,7 @@ public class EntitiesServiceImpl implements EntitiesService {
 
         entities.setTier(tier);
         log.info("Successfully converted request to the new entiti");
-        entities = entitiesRepo.save(entities);
+        entities = entitiRepo.save(entities);
         log.info("Entiti successfully saved to the database with id: {}", entities.getId());
         EntitiesDto entitiesDto = entitiesMapper.entitiesToEntitiesDto(entities);
         log.info("Successfully converted new entiti to the response");
@@ -49,7 +49,7 @@ public class EntitiesServiceImpl implements EntitiesService {
 
     @Override
     public List<EntitiesDto> getAll() {
-        return entitiesRepo.findAll().stream().map(entitiesMapper::entitiesToEntitiesDto).toList();
+        return entitiRepo.findAll().stream().map(entitiesMapper::entitiesToEntitiesDto).toList();
     }
 
     @Override
@@ -83,7 +83,7 @@ public class EntitiesServiceImpl implements EntitiesService {
 
         entitiesMapper.updateEntities(entitiesUpdateDto, entities);
         log.info("Successfully updated entiti data with id: {} without saving", id);
-        Entities updatedEntities = entitiesRepo.save(entities);
+        Entities updatedEntities = entitiRepo.save(entities);
         log.info("Successfully save updated entiti into the database with id: {}", id);
         var response = entitiesMapper.entitiesToEntitiesDto(updatedEntities);
         log.info("Successfully converted updated entiti to the response");
@@ -92,12 +92,12 @@ public class EntitiesServiceImpl implements EntitiesService {
 
     @Override
     public void deleteById(Integer id) {
-        entitiesRepo.delete(findById(id));
+        entitiRepo.delete(findById(id));
         log.info("Successfully converted entiti to response with id: {}", id);
     }
 
     private Entities findById(Integer id) {
-        return entitiesRepo
+        return entitiRepo
                 .findById(id)
                 .orElseThrow(
                         () ->

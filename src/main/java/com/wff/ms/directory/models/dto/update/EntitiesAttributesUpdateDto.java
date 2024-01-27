@@ -1,9 +1,7 @@
 package com.wff.ms.directory.models.dto.update;
 
-import com.wff.ms.directory.models.entity.Attribute;
-import com.wff.ms.directory.models.entity.Entities;
-import io.swagger.v3.oas.annotations.media.Schema;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -15,12 +13,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "Dto Обновление связей сущуств и атрибутов")
+@Schema(description = "Dto Обновление связей существ и атрибутов")
 public class EntitiesAttributesUpdateDto {
 
     @Min(value = 1, message = "Field 'id' cannot be less than 1")
     @NotNull(message = "Field 'id' cannot be null")
-    @Schema(description = "Id связей сущуств и атрибутов", example = "1")
+    @Schema(description = "Id связей существ и атрибутов", example = "1")
     private Integer id;
 
     @Schema(description = "Размер атрибута", example = "10")

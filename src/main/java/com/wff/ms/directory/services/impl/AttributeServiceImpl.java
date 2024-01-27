@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AttributeServiceImpl implements AttributeService {
 
-    private final AttributesRepo attributesRepo;
+    private final AttributeRepo attributesRepo;
     private final AttributeMapper attributeMapper;
 
     @Override

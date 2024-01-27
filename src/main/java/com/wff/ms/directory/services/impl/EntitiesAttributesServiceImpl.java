@@ -6,9 +6,9 @@ import com.wff.ms.directory.models.dto.response.EntitiesAttributesDto;
 import com.wff.ms.directory.models.dto.update.EntitiesAttributesUpdateDto;
 import com.wff.ms.directory.models.entity.EntitiesAttributes;
 import com.wff.ms.directory.modules.mappers.EntitiesAttributesMapper;
-import com.wff.ms.directory.repositories.AttributesRepo;
+import com.wff.ms.directory.repositories.AttributeRepo;
 import com.wff.ms.directory.repositories.EntitiesAttributesRepo;
-import com.wff.ms.directory.repositories.EntitiesRepo;
+import com.wff.ms.directory.repositories.EntitiRepo;
 import com.wff.ms.directory.services.EntitiesAttributesService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,8 +24,8 @@ import java.util.Objects;
 public class EntitiesAttributesServiceImpl implements EntitiesAttributesService {
 
     private final EntitiesAttributesRepo entitiesAttributesRepo;
-    private final EntitiesRepo entitiesRepo;
-    private final AttributesRepo attributesRepo;
+    private final EntitiRepo entitiRepo;
+    private final AttributeRepo attributeRepo;
     private final EntitiesAttributesMapper entitiesAttributesMapper;
 
     @Override
@@ -33,7 +33,7 @@ public class EntitiesAttributesServiceImpl implements EntitiesAttributesService 
         log.info("EntitiesAttributes creation started");
         EntitiesAttributes entitiesAttributes = entitiesAttributesMapper.entitiesAttributesCreateDtoToEntitiesAttributes(entitiesAttributesCreateDto);
         var entities =
-                entitiesRepo
+                entitiRepo
                         .findById(entitiesAttributesCreateDto.getEntitiesId())
                         .orElseThrow(
                                 () ->
@@ -41,7 +41,7 @@ public class EntitiesAttributesServiceImpl implements EntitiesAttributesService 
                                                 "Trying to create an EntitiesAttributes with type not exist. typeId: %d"
                                                         .formatted(entitiesAttributesCreateDto.getEntitiesId())));
         var attribute =
-                attributesRepo
+                attributeRepo
                         .findById(entitiesAttributesCreateDto.getAttributeId())
                         .orElseThrow(
                                 () ->
@@ -82,7 +82,7 @@ public class EntitiesAttributesServiceImpl implements EntitiesAttributesService 
         Integer entitiesId = entitiesAttributesUpdateDto.getEntitiesId();
         if (Objects.nonNull(entitiesId)) {
             var entities =
-                    entitiesRepo
+                    entitiRepo
                             .findById(entitiesId)
                             .orElseThrow(
                                     () ->
@@ -94,7 +94,7 @@ public class EntitiesAttributesServiceImpl implements EntitiesAttributesService 
         Integer attributeId = entitiesAttributesUpdateDto.getAttributeId();
         if (Objects.nonNull(attributeId)) {
             var attribute =
-                    attributesRepo
+                    attributeRepo
                             .findById(attributeId)
                             .orElseThrow(
                                     () ->

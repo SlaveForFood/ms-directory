@@ -6,7 +6,7 @@ import com.wff.ms.directory.models.dto.response.EntitiesSkillsDto;
 import com.wff.ms.directory.models.dto.update.EntitiesSkillsUpdateDto;
 import com.wff.ms.directory.models.entity.EntitiesSkills;
 import com.wff.ms.directory.modules.mappers.EntitiesSkillsMapper;
-import com.wff.ms.directory.repositories.EntitiesRepo;
+import com.wff.ms.directory.repositories.EntitiRepo;
 import com.wff.ms.directory.repositories.EntitiesSkillsRepo;
 import com.wff.ms.directory.repositories.SkillRepo;
 import com.wff.ms.directory.services.EntitiesSkillsService;
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 public class EntitiesSkillsServiceImpl implements EntitiesSkillsService {
 
   private final EntitiesSkillsRepo entitiesSkillsRepo;
-  private final EntitiesRepo entitiesRepo;
+  private final EntitiRepo entitiRepo;
   private final SkillRepo skillRepo;
   private final EntitiesSkillsMapper entitiesSkillsMapper;
 
@@ -31,7 +31,7 @@ public class EntitiesSkillsServiceImpl implements EntitiesSkillsService {
         entitiesSkillsMapper.entitiesSkillsCreateDtoToEntitiesSkills(entitiesSkillsCreateDto);
 
     var entiti =
-        entitiesRepo
+        entitiRepo
             .findById(entitiesSkillsCreateDto.getEntitiId())
             .orElseThrow(
                 () ->
@@ -77,7 +77,7 @@ public class EntitiesSkillsServiceImpl implements EntitiesSkillsService {
 
     if (Objects.nonNull(entitiId)) {
       var entiti =
-          entitiesRepo
+          entitiRepo
               .findById(entitiId)
               .orElseThrow(
                   () ->
