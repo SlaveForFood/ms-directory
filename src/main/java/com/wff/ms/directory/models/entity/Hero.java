@@ -1,12 +1,11 @@
 package com.wff.ms.directory.models.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 @Data
 @Entity
@@ -16,6 +15,7 @@ import javax.persistence.*;
 @Table(name = "heroes")
 @Schema(description = "Entity Сущность описывающая героя")
 public class Hero {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Schema(description = "Id героя")
@@ -31,5 +31,4 @@ public class Hero {
   @JoinColumn(name = "faction_id")
   @Schema(description = "Фракция героя")
   private Faction faction;
-
 }

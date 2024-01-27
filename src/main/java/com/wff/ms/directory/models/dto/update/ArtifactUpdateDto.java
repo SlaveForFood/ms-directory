@@ -20,10 +20,13 @@ public class ArtifactUpdateDto {
   @Schema(description = "Id артефакта", example = "1")
   private Integer id;
 
-  @Schema(description = "Наименование артефакта", example = "Кольцо Бильбо")
+  @Schema(description = "Наименование артефакта", example = "Нагрудник воина")
   private String name;
 
-  @Schema(description = "Стоимость артефакта", example = "1000")
+  @Schema(description = "Описание артефакта", example = "Герой получает +2 к защите")
+  private String description;
+
+  @Schema(description = "Стоимость артефакта", example = "5000")
   private Integer cost;
 
   @Schema(description = "Продаваемый ли (доступный к покупке) артефакт", example = "true")

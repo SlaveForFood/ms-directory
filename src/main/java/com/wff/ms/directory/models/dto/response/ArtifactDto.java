@@ -19,6 +19,9 @@ public class ArtifactDto {
   @Schema(description = "Наименование артефакта", example = "Artifact")
   private String name;
 
+  @Schema(description = "Описание артефакта", example = "Герой получает +2 к защите")
+  private String description;
+
   @Schema(description = "Стоимость артефакта", example = "1000")
   private Integer cost;
 

@@ -10,20 +10,19 @@ import com.wff.ms.directory.models.entity.HeroesSkills;
 import com.wff.ms.directory.models.entity.Skill;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper
 public interface HeroesSkillsMapper {
-    HeroesSkills HeroesSkillsCreateDtoToHeroesSkills(HeroesSkillsCreateDto dto);
+  HeroesSkills heroesSkillsCreateDtoToHeroesSkills(HeroesSkillsCreateDto dto);
 
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateHeroesSkills(HeroesSkillsUpdateDto dto, @MappingTarget HeroesSkills heroesSkills);
+  @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+  void updateHeroesSkills(HeroesSkillsUpdateDto dto, @MappingTarget HeroesSkills heroesSkills);
 
-    HeroesSkillsDto HeroesSkillToHeroesSkillsDto(HeroesSkills heroesSkills);
+  HeroesSkillsDto heroesSkillToHeroesSkillsDto(HeroesSkills heroesSkills);
 
-    HeroDto heroToHeroDto(Hero hero);
+  HeroDto heroToHeroDto(Hero hero);
 
-    SkillDto skillToSkillDto(Skill skill);
+  SkillDto skillToSkillDto(Skill skill);
 }

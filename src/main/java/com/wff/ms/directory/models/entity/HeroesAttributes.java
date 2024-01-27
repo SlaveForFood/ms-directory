@@ -1,12 +1,11 @@
 package com.wff.ms.directory.models.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 /**
  * Сущность описывающая связь героев и атрибутов
@@ -22,6 +21,7 @@ import javax.persistence.*;
 @Table(name = "heroes_attributes")
 @Schema(description = "Entity Сущность описывающая связь героев и атрибутов")
 public class HeroesAttributes {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Schema(description = "Id связи артефакта и атрибута")

@@ -13,13 +13,12 @@ import lombok.NoArgsConstructor;
 @Schema(description = "Dto Тир")
 public class TierDto {
 
-    @Schema(description = "Id тира", example = "1")
-    private Integer id;
+  @Schema(description = "Id тира", example = "1")
+  private Integer id;
 
-    @Schema(description = "Наименование тира", example = "Tier")
-    private String name;
+  @Schema(description = "Наименование тира", example = "Tier")
+  private String name;
 
-    @Schema(description = "Описание тира", example = "The highest shooting tier")
-    private Integer description;
-
+  @Schema(description = "Описание тира", example = "The highest shooting tier")
+  private String description;
 }

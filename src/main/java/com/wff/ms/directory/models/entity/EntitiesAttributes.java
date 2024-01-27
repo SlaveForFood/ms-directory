@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name = "entities_attributes")
 public class EntitiesAttributes {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id", nullable = false)
@@ -22,7 +23,7 @@ public class EntitiesAttributes {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "entities_id")
-  private Entities entity;
+  private Entiti entiti;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "attribute_id")

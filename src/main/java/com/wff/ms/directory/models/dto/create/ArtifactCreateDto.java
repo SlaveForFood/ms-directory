@@ -20,6 +20,10 @@ public class ArtifactCreateDto {
   @Schema(description = "Наименование артефакта", example = "Кольцо Бильбо")
   private String name;
 
+  @NotBlank(message = "Field 'name' cannot be null or empty")
+  @Schema(description = "Описание артефакта")
+  private String description;
+
   @Min(value = 1, message = "Field 'cost' cannot be less than 1")
   @NotNull(message = "Field 'cost' cannot be null")
   @Schema(description = "Стоимость артефакта", example = "1000")

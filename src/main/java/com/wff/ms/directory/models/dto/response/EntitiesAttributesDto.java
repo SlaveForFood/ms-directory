@@ -1,7 +1,5 @@
 package com.wff.ms.directory.models.dto.response;
 
-import com.wff.ms.directory.models.entity.Attribute;
-import com.wff.ms.directory.models.entity.Entities;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,18 +10,18 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "Dto связей сущуств и атрибутов")
+@Schema(description = "Dto связей существ и атрибутов")
 public class EntitiesAttributesDto {
 
-    @Schema(description = "Id связи сущуств и атрибутов", example = "1")
-    private Integer id;
+  @Schema(description = "Id связи существ и атрибутов", example = "1")
+  private Integer id;
 
-    @Schema(description = "Размер атрибута", example = "10")
-    private Integer count;
+  @Schema(description = "Значение атрибута у существа", example = "10")
+  private Integer count;
 
-    @Schema(description = "Существо")
-    private Entities entitiesId;
+  @Schema(description = "Существо")
+  private EntitiDto entiti;
 
-    @Schema(description = "Атрибут")
-    private Attribute attributeId;
+  @Schema(description = "Атрибут")
+  private AttributeDto attribute;
 }

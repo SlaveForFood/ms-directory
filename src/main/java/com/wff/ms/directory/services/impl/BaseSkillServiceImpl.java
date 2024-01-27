@@ -2,7 +2,7 @@ package com.wff.ms.directory.services.impl;
 
 import com.wff.ms.directory.exceptions.NotFoundException;
 import com.wff.ms.directory.models.dto.create.BaseSkillCreateDto;
-import com.wff.ms.directory.models.dto.response.BaseSkillsDto;
+import com.wff.ms.directory.models.dto.response.BaseSkillDto;
 import com.wff.ms.directory.models.dto.update.BaseSkillUpdateDto;
 import com.wff.ms.directory.models.entity.BaseSkill;
 import com.wff.ms.directory.modules.mappers.BaseSkillMapper;
@@ -20,14 +20,14 @@ public class BaseSkillServiceImpl implements BaseSkillService {
   private final BaseSkillMapper baseSkillMapper;
 
   @Override
-  public BaseSkillsDto create(BaseSkillCreateDto baseSkillCreateDto) {
+  public BaseSkillDto create(BaseSkillCreateDto baseSkillCreateDto) {
     var baseSkill = baseSkillMapper.baseSkillCreateDtoToBaseSkill(baseSkillCreateDto);
     baseSkill = baseSkillRepo.save(baseSkill);
     return baseSkillMapper.baseSkillToBaseSkillDto(baseSkill);
   }
 
   @Override
-  public BaseSkillsDto update(BaseSkillUpdateDto baseSkillUpdateDto) {
+  public BaseSkillDto update(BaseSkillUpdateDto baseSkillUpdateDto) {
     BaseSkill baseSkill = findById(baseSkillUpdateDto.getId());
     baseSkillMapper.updateBaseSkill(baseSkillUpdateDto, baseSkill);
     baseSkillRepo.save(baseSkill);
@@ -35,12 +35,12 @@ public class BaseSkillServiceImpl implements BaseSkillService {
   }
 
   @Override
-  public List<BaseSkillsDto> getAll() {
+  public List<BaseSkillDto> getAll() {
     return baseSkillRepo.findAll().stream().map(baseSkillMapper::baseSkillToBaseSkillDto).toList();
   }
 
   @Override
-  public BaseSkillsDto getById(Integer id) {
+  public BaseSkillDto getById(Integer id) {
     return baseSkillMapper.baseSkillToBaseSkillDto(findById(id));
   }
 

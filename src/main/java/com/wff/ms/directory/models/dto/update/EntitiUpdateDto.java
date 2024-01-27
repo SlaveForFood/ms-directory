@@ -10,16 +10,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class TierUpdateDto {
+public class EntitiUpdateDto {
 
   @Min(value = 1, message = "Field 'id' cannot be less than 1")
   @NotNull(message = "Field 'id' cannot be null")
-  @Schema(description = "Id тира", example = "1")
+  @Schema(description = "Id существа", example = "1")
   private Integer id;
 
-  @Schema(description = "Наименование тира", example = "Высший")
+  @Schema(description = "Наименование существа", example = "Абобус")
   private String name;
 
-  @Schema(description = "Описание тира", example = "Самый высший")
-  private Integer description;
+  @Schema(description = "Стоимость существа", example = "200")
+  private Integer cost;
+
+  @Min(value = 1, message = "Field 'tierId' cannot be less than 1")
+  @Schema(description = "Id тира существа", example = "1")
+  private Integer tierId;
 }

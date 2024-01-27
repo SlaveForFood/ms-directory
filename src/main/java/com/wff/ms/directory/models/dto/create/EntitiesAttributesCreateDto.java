@@ -15,17 +15,17 @@ import lombok.NoArgsConstructor;
 @Schema(description = "Dto Создание связей сущуств и атрибутов")
 public class EntitiesAttributesCreateDto {
 
-    @NotNull(message = "Field 'cost' cannot be null")
-    @Schema(description = "Стоимость артефакта", example = "10")
-    private Integer count;
+  @NotNull(message = "Field 'cost' cannot be null")
+  @Schema(description = "Стоимость артефакта", example = "10")
+  private Integer count;
 
-    @Min(value = 1, message = "Field 'entitiesId' cannot be less than 1")
-    @NotNull(message = "Field 'entitiesId' cannot be null")
-    @Schema(description = "Id Существа", example = "1")
-    private Integer entitiesId;
+  @Min(value = 1, message = "Field 'entitiesId' cannot be less than 1")
+  @NotNull(message = "Field 'entitiesId' cannot be null")
+  @Schema(description = "Id Существа", example = "1")
+  private Integer entitiesId;
 
-    @Min(value = 1, message = "Field 'attributeId' cannot be less than 1")
-    @NotNull(message = "Field 'attributeId' cannot be null")
-    @Schema(description = "Id атрибута", example = "1")
-    private Integer attributeId;
+  @Min(value = 1, message = "Field 'attributeId' cannot be less than 1")
+  @NotNull(message = "Field 'attributeId' cannot be null")
+  @Schema(description = "Id атрибута", example = "1")
+  private Integer attributeId;
 }

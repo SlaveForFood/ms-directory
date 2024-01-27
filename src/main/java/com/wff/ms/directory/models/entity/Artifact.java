@@ -30,6 +30,9 @@ public class Artifact {
   @Schema(description = "Наименование артефакта")
   private String name;
 
+  @Schema(description = "Описание артефакта")
+  private String description;
+
   @Schema(description = "Стоимость артефакта")
   private Integer cost;
 

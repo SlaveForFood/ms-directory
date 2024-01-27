@@ -83,13 +83,13 @@ public class SkillServiceImpl implements SkillService {
     Integer baseSkillId = skillUpdateDto.getBaseSkillId();
     if (Objects.nonNull(baseSkillId)) {
       var baseSkill =
-              baseSkillRepo
-                      .findById(skillUpdateDto.getBaseSkillId())
-                      .orElseThrow(
-                              () ->
-                                      new org.webjars.NotFoundException(
-                                              "Trying to create an skill with base-skill not exist. baseSkillId: %d"
-                                                      .formatted(skillUpdateDto.getBaseSkillId())));
+          baseSkillRepo
+              .findById(skillUpdateDto.getBaseSkillId())
+              .orElseThrow(
+                  () ->
+                      new org.webjars.NotFoundException(
+                          "Trying to create an skill with base-skill not exist. baseSkillId: %d"
+                              .formatted(skillUpdateDto.getBaseSkillId())));
       skill.setBaseSkill(baseSkill);
     }
 
